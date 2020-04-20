@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+        <title>Conversor Bin2Dec</title>
+    </head>
+    <style>
+        .vertical-center { /*alinhamento vertical*/
+            min-height: 90%;  
+            min-height: 90vh; 
+
+            display: flex;
+            align-items: center;
+        }
+    </style>
+    <body>
+        <div id="app" class="row d-flex justify-content-center vertical-center">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <label>Conversor de binario</label>
+                    <input v-on:keyup="conversor" type="text" class="form-control" name="input-value" v-model="value">
+                </div>      
+                <div class="card-body">
+                    <label>Resultado</label>
+                    <input type="text" class="form-control" disabled v-bind:value="value_finaly">
+                </div>
+            </div>
+        </div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    value_finaly: 0,
+                    value: 0
+                },
+                methods: {
+                    conversor: function () {
+                        if (!isNaN(this.value)){
+                            this.value_finaly = (this.value >>> 0).toString(2)
+                        }else{
+                            alert("Não é um numero: "+this.value)
+                        }
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
